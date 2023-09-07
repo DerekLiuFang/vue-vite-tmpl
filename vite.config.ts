@@ -1,26 +1,29 @@
-// import { webUpdateNotice } from "@plugin-web-update-notification/vite";
-import vue from "@vitejs/plugin-vue";
-import { resolve } from "node:path";
-import { defineConfig } from "vite";
+import vue from '@vitejs/plugin-vue';
+import { resolve } from 'node:path';
+import { defineConfig } from 'vite';
+import eslintPlugin from 'vite-plugin-eslint';
+
+function pathResolve(dir: string) {
+  return resolve(process.cwd(), '.', dir);
+}
 
 export default defineConfig({
-  base: "./",
+  resolve: {
+    alias: [
+      {
+        find: /\/#\//,
+        replacement: pathResolve('types') + '/'
+      },
+      {
+        find: '@',
+        replacement: pathResolve('src') + '/'
+      }
+    ]
+  },
   plugins: [
     vue(),
-    // webUpdateNotice({
-    //   logVersion: true,
-    //   // 自定义通知栏
-    //   notificationProps: {
-    //     title: "标题",
-    //     description: "System update, please refresh the page",
-    //     buttonText: "刷新",
-    //     dismissButtonText: "忽略",
-    //   },
-    // }),
-  ],
-  resolve: {
-    alias: {
-      "@": resolve(__dirname, "./src"),
-    },
-  },
+    eslintPlugin({
+      include: ['src/**/*.js', 'src/**/*.vue', 'src/*.js', 'src/*.vue']
+    })
+  ]
 });
