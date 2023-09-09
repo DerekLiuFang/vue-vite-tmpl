@@ -10,11 +10,30 @@ module.exports = {
   // 行位是否使用分号，默认为true
   semi: true,
   // 是否使用尾逗号，有三个可选值"<none|es5|all>"
-  trailingComma: 'none',
+  trailingComma: 'all',
   // 对象大括号直接是否有空格，默认为true，效果：{ foo: bar }
   bracketSpacing: true,
   // 控制换行类型(lf | cr | crlf)
-  endOfLine: 'lf',
-  // jsx是否使用单引号
-  // jsxSingleQuote: false,
+  // endOfLine: 'auto',
+  // 对象的 key 仅在必要时用引号
+  quoteProps: 'as-needed',
+  // jsx 不使用单引号，而使用双引号
+  jsxSingleQuote: false,
+  // jsx 标签的反尖括号需要换行
+  jsxBracketSameLine: false,
+  // 箭头函数，只有一个参数的时候，也需要括号
+  arrowParens: 'always',
+  // 每个文件格式化的范围是文件的全部内容
+  rangeStart: 0,
+  rangeEnd: Infinity,
+  // 不需要写文件开头的 @prettier
+  requirePragma: false,
+  // 不需要自动在文件开头插入 @prettier
+  insertPragma: false,
+  // 使用默认的折行标准
+  proseWrap: 'preserve',
+  // 根据显示样式决定 html 要不要折行
+  htmlWhitespaceSensitivity: 'css',
+  // 换行符使用 lf
+  endOfLine: 'auto',
 };
